@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+body {
+    font-family: 'Pretendard', sans-serif;
+}
+
+@tailwind base;
+
+/* Add global styles here */
+@layer base {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
