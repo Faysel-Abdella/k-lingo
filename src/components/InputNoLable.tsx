@@ -19,7 +19,7 @@ const InputNoLabel = ({
 }) => {
   return (
     <section className={`flex items-center gap-7 ${mainStyles}`}>
-      <div>
+      <div className="w-full">
         <div className={`${inputParentStyles} `}>
           <Input
             placeholder={placeholder}
