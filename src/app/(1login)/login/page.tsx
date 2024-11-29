@@ -19,7 +19,7 @@ const Login = () => {
       <div className="flex flex-col items-center justify-start max-sm:w-[70%]  max-lg:w-[50%] w-[35%] gap-[20px] sm:gap-[40px] mt-5 mb-5 sm:mt-10 sm:mb-10 flex-1">
         {" "}
         {/* Added flex-1 for spacing */}
-        <h2 className="text-left h-[33.6px] text-[20px] sm:text-[24px] font-bold sm:font-semibold text-black mt-[10px]">
+        <h2 className="text-left min-h-[33.6px] text-[20px] sm:text-[24px] font-bold sm:font-semibold text-black mt-[10px]">
           로그인
         </h2>
         {/* Input Fields */}
