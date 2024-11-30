@@ -58,7 +58,7 @@ const HomePage = () => {
 
       <div className="flex flex-row gap-4 justify-between w-[75%] max-lg:w-[85%] max-md:w-full">
         {/* SideBar */}
-        <Sidebar />
+        <Sidebar width="[30%]" />
 
         {/* RightSide */}
         <div className="flex flex-col items-center w-full max-md:mt-10 py-[24px] max-md:px-4">
