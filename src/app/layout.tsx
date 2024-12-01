@@ -7,7 +7,7 @@ import { NextUIProvider } from "@nextui-org/react";
 
 export const metadata: Metadata = {
   title: "NexaCode",
-  description: "Created by Nexacode - 트로피",
+  description: "Created by Nexacode",
 };
 
 export default function RootLayout({
@@ -22,8 +22,7 @@ export default function RootLayout({
           {/* HEADER  */}
           {children}
           {/* FOOTER  */}
-
-          </NextUIProvider>
+        </NextUIProvider>
       </body>
     </html>
   );
