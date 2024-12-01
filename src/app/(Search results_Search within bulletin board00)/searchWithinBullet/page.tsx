@@ -21,6 +21,7 @@ import {
 
 const SearchWithinBullet = () => {
   const options = [{ key: "1", label: "고1 모의" }];
+
   // Pagination Logic
   const [page, setPage] = useState(1);
 
@@ -44,25 +45,25 @@ const SearchWithinBullet = () => {
   >([]);
 
   return (
-    <div className="min-h-[100vh] w-full flex flex-col items-center justify-between">
+    <div className="min-h-[100vh] flex flex-col items-center">
       <Header />
       <hr className="w-full border-t-1 border-[rgb(207,212,218)]" />
 
       {/* Sidebar and the right side */}
-      <div className="flex min-h-full flex-row w-[75%] items-start max-md:justify-start max-md:items-start max-lg:w-[85%] max-md:w-[100%] gap-[25px]">
+      <div className="flex flex-row w-[75%] items-start max-md:justify-start max-md:items-start max-lg:w-[85%] max-md:w-full gap-[10px]">
         {/* SideBar */}
-        <Sidebar2 width="w-[25%]  max-md:w-[30%] max-sm:w-[50%]" />
+        <Sidebar2 width="w-[25%] max-md:w-[30%] max-sm:w-[50%]" />
 
         {/* RightSide */}
-        <div className="flex flex-col items-start justify-start flex-1 max-md:w-[75%] max-md:px-[5%] min-h-auto pt-[30px] max-md:pt-[70px] gap-[20px]">
-          {/* Top */}
+        <div className="flex flex-col items-start justify-start w-[75%] max-md:w-[100%] h-auto py-[60px] gap-[30px]">
+          {/* Top  */}
           <div className="flex flex-col items-center justify-center w-full min-h-[86px] gap-[12px]">
             <div className="flex flex-col items-center justify-center w-full min-h-[34px]">
               <h3 className="font-bold text-[24px]">검색 결과</h3>
             </div>
 
             {/* Input and Button Row */}
-            <div className="flex flex-row items-center justify-center w-[60%] max-md:flex-wrap   bg-red-400 min-h-[44px] gap-[12px]">
+            <div className="flex flex-row items-center justify-center w-[70%] max-md:flex-wrap min-h-[44px] gap-[12px]">
               {/* Dropdown */}
               <DropDown
                 options={options}
@@ -74,7 +75,7 @@ const SearchWithinBullet = () => {
               {/* Input Field */}
               <InputNoLabel
                 placeholder="사미인곡"
-                inputParentStyles=" flex-1 h-full rounded-md px-[16px]"
+                inputParentStyles=" flex-1 min-w-[200px] h-full rounded-md px-[16px]"
                 mainStyles="w-full"
               />
 
@@ -85,33 +86,33 @@ const SearchWithinBullet = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center w-full  gap-[1px] pt-10">
-            <div className="flex flex-row items-start justify-start pl-3 min-w-full min-h-[20px]">
-              <h3 className=" text-[#868F9A] text-[14px]">
-                검색어<span className="text-[#8D64F8]">(사미인곡)</span>으로
-                검색한 결과
-              </h3>
-            </div>
-          </div>
+          {/* Bottom  */}
           <div className="w-full gap-[24px]">
-            <article className="">
+            <div className="flex flex-col items-center justify-center w-full  gap-[1px] pt-10">
+              <div className="flex flex-row items-start justify-start pl-3 min-w-full ">
+                <h3 className=" text-[#868F9A] text-[14px]">
+                  검색어<span className="text-[#8D64F8]">(사미인곡)</span>으로
+                  검색한 결과
+                </h3>
+              </div>
+            </div>
+            <article className="w-full">
               <Table
                 aria-label="Data Table"
                 shadow="none"
                 classNames={{
                   th: [
-                    "relative px-[40px] py-[10px] font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A] w-full min-h-[41px] text-center",
+                    "relative px-[40px] py-[10px] font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A] w-full h-[41px] text-center",
                     "after:content-[''] after:absolute after:right-0 after:top-2 after:bottom-2 after:w-[1px] after:bg-gray-300",
                   ],
                   td: [
-                    "py-[10px] w-full min-h-[40px] px-[20px] text-[14px] text-center font-normal text-base text-[#363941] ",
+                    "py-[10px] w-full h-[40px] px-[20px] text-[14px] text-center font-normal text-base text-[#363941] ",
                   ],
                 }}
                 bottomContent={
-                  <div className="flex flex-col items-center justify-center w-full gap-[40px]">
-                    {/* Existing Button Container */}
-                    <div className="flex flex-row items-center justify-between min-h-[42px] mb-4 gap-4">
-                      <Button className=" min-h-[42px] font-bold rounded-md py-[10px] px-[24px] bg-[#42A8FD] text-white flex items-center gap-4">
+                  <div className="flex flex-col w-full">
+                    <div className="flex flex-row items-center justify-between  w-[462px] h-[42px] mb-4">
+                      <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[24px] bg-[#42A8FD] text-white">
                         <Image
                           src="/assets/Icons/whiteBag.svg"
                           alt="Clip Image"
@@ -120,7 +121,7 @@ const SearchWithinBullet = () => {
                         />
                         선택파일 장바구니 담기
                       </Button>
-                      <Button className="min-h-[42px] font-bold rounded-md py-[10px] px-[20px] bg-[#42A8FD] text-white flex items-center">
+                      <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[20px] bg-[#42A8FD] text-white">
                         <Image
                           src="/assets/Icons/downloadIcon.svg"
                           alt="Clip Image"
@@ -131,35 +132,38 @@ const SearchWithinBullet = () => {
                       </Button>
                     </div>
 
-                    <Pagination
-                      isCompact
-                      showControls
-                      showShadow
-                      color="primary"
-                      page={page}
-                      total={pages}
-                      onChange={(page) => setPage(page)}
-                    />
-
-                    {/* Input and Button Row */}
-                    <div className="flex flex-row flex-wrap items-center justify-between min-h-[40px] ">
-                      {/* Input Field */}
-                      <DropDown
-                        options={options}
-                        defaultSelectedKeys="1"
-                        selectStyles="w-[106px] min-h-[44px]"
-                        insideStyles="px-[16px] w-[104px] rounded-md"
+                    <div className="flex justify-center w-full">
+                      <Pagination
+                        isCompact
+                        showControls
+                        showShadow
+                        color="primary"
+                        page={page}
+                        total={pages}
+                        onChange={(page) => setPage(page)}
                       />
+                    </div>
 
-                      <InputNoLabel
-                        placeholder="사미인곡"
-                        inputParentStyles="w-[252px] rounded-md  px-[16px] min-h-[40px] "
-                      />
+                    <div className="flex flex-row flex-wrap items-center w-full justify-center pt-10 min-h-[40px] ">
+                      <div className="flex flex-row items-center justify-between w-[60%]  min-h-[40px] ">
+                        {/* Input Field */}
+                        <DropDown
+                          options={options}
+                          defaultSelectedKeys="1"
+                          selectStyles="w-[106px] min-h-[44px]"
+                          insideStyles="px-[16px] w-[104px] rounded-md"
+                        />
 
-                      {/* Button */}
-                      <Button className="w-[64px] h-full px-[20px] py-[10px] bg-[#ECEDF1] text-[#868F9A] rounded-md">
-                        검색
-                      </Button>
+                        <InputNoLabel
+                          placeholder="사미인곡"
+                          inputParentStyles="w-[252px] rounded-md  px-[16px] min-h-[40px] "
+                        />
+
+                        {/* Button */}
+                        <Button className="w-[64px] h-full px-[20px] py-[10px] bg-[#ECEDF1] text-[#868F9A] rounded-md">
+                          검색
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 }
@@ -197,7 +201,6 @@ const SearchWithinBullet = () => {
                       isSelected={allListCheckedPageNumbers.includes(page)}
                     ></Checkbox>
                   </TableColumn>
-
                   <TableColumn>
                     <span className="">번호</span>
                   </TableColumn>
@@ -214,10 +217,8 @@ const SearchWithinBullet = () => {
                     <span className=" ">연회원 점수</span>
                   </TableColumn>
                   <TableColumn>
-                    <span className=" ]">포인트</span>
+                    <span className=" ">포인트</span>
                   </TableColumn>
-
-                  {/* <TableColumn>상세보기</TableColumn> */}
                 </TableHeader>
                 <TableBody>
                   {items.map((row) => (
@@ -238,8 +239,11 @@ const SearchWithinBullet = () => {
                         ></Checkbox>
                       </TableCell>
                       <TableCell>
-                        <span className="text-[#868F9A] ">{row.number}</span>
+                        <span className="text-[#868F9A] w-[50px]">
+                          {row.number}
+                        </span>
                       </TableCell>
+
                       <TableCell>
                         <div className="flex items-start w-[100px] justify-start gap-2">
                           <span>
@@ -256,9 +260,6 @@ const SearchWithinBullet = () => {
                           />
                         </div>
                       </TableCell>
-                      <TableCell>
-                        <span className="text-[#868F9A]">{row.author}</span>
-                      </TableCell>
                       <TableCell className="w-[21px]">
                         <span className="w-[21px]">{row.numberOfPages}</span>
                       </TableCell>
@@ -269,6 +270,11 @@ const SearchWithinBullet = () => {
                       </TableCell>
                       <TableCell className="w-[21px]">
                         <span className="w-[21px]">{row.point}</span>
+                      </TableCell>
+                      <TableCell className="w-[80px]">
+                        <span className="text-[#868F9A] w-[100px]">
+                          {row.point}
+                        </span>
                       </TableCell>
 
                       {/* <TableCell>
@@ -294,9 +300,3 @@ const SearchWithinBullet = () => {
 };
 
 export default SearchWithinBullet;
-
-// th: [
-//     "relative px-[40px] py-[10px] font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A] w-full max-w-full overflow-x-auto min-h-[41px] ",
-//     // "after:content-[''] after:absolute after:right-0 after:top-2 after:bottom-2 after:w-[1px] after:bg-gray-300",
-// ],
-// td: ["py-[10px]  w-full max-w-full overflow-x-auto min-h-[40px] px-[20px] text-[14px] text-center font-normal text-base text-[#363941] "],
