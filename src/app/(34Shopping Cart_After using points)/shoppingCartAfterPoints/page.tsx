@@ -56,7 +56,7 @@ const ShoppingCartAfterPoints = () => {
       {/* Sidebar and the right side */}
       <div className="flex min-h-full flex-row w-[75%] items-start max-md:justify-start max-md:items-start max-lg:w-[85%] max-md:w-[100%] gap-[25px]">
         {/* SideBar */}
-        <Sidebar width="w-[25%]" />
+        <Sidebar width="w-[25%] max-md:w-[30%] max-sm:w-[50%]" />
 
         {/* RightSide */}
         <div className="flex flex-col items-start justify-start flex-1 max-md:w-[75%] max-md:px-[5%] min-h-auto pt-[30px] max-md:pt-[70px] gap-[20px]">
@@ -109,7 +109,7 @@ const ShoppingCartAfterPoints = () => {
                     // }
                   >
                     <TableHeader className="border-b border-gray-300">
-                      <TableColumn className="flex justify-center gap-10 items-center border-r border-[#CFD4DA] border-gray-300">
+                      <TableColumn className="flex justify-center gap-10 items-center border-r  border-gray-300">
                         <Checkbox
                           onClick={() => {
                             if (allListCheckedPageNumbers.includes(page)) {

@@ -83,8 +83,8 @@ const HomePage = () => {
             </div>
             {/* ---- Box-1 ---- */}
             <div className="flex flex-col h-auto w-full border border-[#EB553D] rounded-xl">
-              <div className="flex flex-row max-md:flex-col items-center min-h-[52px] h-auto border-b max-md:border-[#EB553D] border-[#CFD4DA]">
-                <div className="flex flex-row items-center justify-center w-[40%] max-md:w-[100%] max-md:py-4 h-[100%] border-r border-[#CFD4DA] gap-[6px] rounded-tl-xl bg-[#F3F4F6]">
+              <div className="flex flex-row max-md:flex-col items-center min-h-[52px] h-auto border-b  max-md:border-[#EB553D] border-[#CFD4DA]">
+                <div className="flex flex-row items-center justify-center w-[40%] max-md:w-[100%] max-md:py-4 h-[100%] border-r border-[#CFD4DA] gap-[6px] rounded-tl-xl max-md:rounded-r-xl bg-[#F3F4F6]">
                   <Image
                     src="/assets/Icons/Search.svg"
                     alt="Search Icon"
@@ -185,9 +185,9 @@ const HomePage = () => {
             </div>
             {/* Box-2  */}
             <div className="flex flex-col h-auto w-full border border-[#3abdf1] rounded-xl">
-              <div className="flex flex-row max-md:flex-col items-center w-full min-h-[52px] h-auto border-b  border-[#CFD4DA]">
+              <div className="flex flex-row max-md:flex-col items-center w-full min-h-[52px] h-auto border-b border-[#CFD4DA]">
                 <div className=" flex flex-row w-[20%] max-md:w-[100%] min-h-[52px]  h-full">
-                  <div className="flex flex-row items-center justify-center flex-1 h-full border-r max-md:border-b  rounded-tl-xl border-[#CFD4DA] gap-[6px] bg-[#F3F4F6] px-4">
+                  <div className="flex flex-row items-center justify-center flex-1 h-full border-r max-md:border-b  rounded-tl-xl border-[#CFD4DA] gap-[6px] max-md:rounded-r-xl bg-[#F3F4F6] px-4">
                     <Image
                       src="/assets/Icons/Search.svg"
                       alt="Search Icon"
@@ -322,7 +322,7 @@ const HomePage = () => {
               <div className="flex flex-col h-auto w-full border border-[#CFD4DA] rounded-xl">
                 <div className="flex flex-row max-md:flex-col items-center w-full min-h-[52px] h-auto border-[#CFD4DA]">
                   <div className=" flex flex-row w-[20%] max-md:w-[100%] min-h-[52px] h-full">
-                    <div className="flex flex-row items-center justify-center flex-1 h-full border-r max-md:border-b  border-[#CFD4DA] gap-[6px] rounded-bl-xl rounded-tl-xl bg-[#F3F4F6] px-4">
+                    <div className="flex flex-row items-center justify-center flex-1 h-full border-r max-md:border-b  border-[#CFD4DA] gap-[6px] rounded-bl-xl rounded-tl-xl max-md:rounded-r-xl bg-[#F3F4F6] px-4">
                       <div className="text-[14px] font-bold">
                         2022 중학 국어 교과서
                       </div>
@@ -371,7 +371,7 @@ const HomePage = () => {
               <div className="flex flex-col h-auto w-full border border-[#CFD4DA] rounded-xl">
                 <div className="flex flex-row max-md:flex-col items-center w-full min-h-[52px] h-auto   border-[#CFD4DA]">
                   <div className=" flex flex-row w-[20%] max-md:w-[100%] min-h-[52px] h-full">
-                    <div className="flex flex-row items-center justify-center flex-1 h-full border-r max-md:border-b  border-[#CFD4DA] gap-[6px] rounded-bl-xl rounded-tl-xl bg-[#F3F4F6] px-4">
+                    <div className="flex flex-row items-center justify-center flex-1 h-full border-r max-md:border-b  border-[#CFD4DA] gap-[6px] rounded-bl-xl rounded-tl-xl max-md:rounded-r-xl bg-[#F3F4F6] px-4">
                       <div className="text-[14px] font-bold">
                         2015 중학 국어 교과서
                       </div>
@@ -783,7 +783,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

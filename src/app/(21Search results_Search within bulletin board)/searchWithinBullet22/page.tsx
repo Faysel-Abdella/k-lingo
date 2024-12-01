@@ -51,7 +51,7 @@ const SearchWithinBullet = () => {
       {/* Sidebar and the right side */}
       <div className="flex flex-row items-start justify-start w-[75%] max-lg:w-[85%] max-md:w-[100%] h-auto  gap-[20px]">
         {/* SideBar */}
-        <Sidebar2 width="w-[20%]" />
+        <Sidebar2 width="w-[20%] max-md:w-[30%] max-sm:w-[50%]" />
 
         {/* RightSide */}
         <div className="flex flex-col items-start justify-start w-[75%] max-md:w-[100%] h-auto pt-[30px] max-md:pt-[10%] max-md:px-[5%] gap-[20px]">

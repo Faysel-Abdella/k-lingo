@@ -1,26 +1,26 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+import Menu from "./Menu";
 
 const Sidebar3 = ({ width }: { width: string }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div
-      className={`max-md:absolute  ${width} min-h-[100vh] gap-[12px] mt-0 pt-0`}
+      className={`max-md:absolute z-50 relative ${width} max-md:flex-1 max-md:overflow-y-scroll`}
     >
-      <div className="hidden max-md:block p-4">
-        <svg
-          width="29"
-          height="24"
-          viewBox="0 0 29 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="29" height="7" rx="3.5" fill="#D9D9D9" />
-          <rect y="17" width="29" height="7" rx="3.5" fill="#D9D9D9" />
-          <rect y="9" width="29" height="6" rx="3" fill="#D9D9D9" />
-        </svg>
-      </div>
-      {/* TOP */}
       <div
-        className={`flex flex-col w-full min-h-[2570px] gap-[12px] mt-0 pt-0 max-md:hidden`}
+        className="hidden max-md:block p-4 max-md:fixed max-md:top-0 w-full bg-white"
+        onClick={() => {
+          setIsExpanded(!isExpanded);
+        }}
+      >
+        <Menu isExpanded={isExpanded} />
+      </div>
+      <div
+        className={`flex flex-col w-full min-h-[2570px] gap-[12px] mt-0 pt-0 max-md:bg-white max-md:px-2 max-md:mt-[50px] ${
+          isExpanded ? "" : "max-md:hidden"
+        }`}
       >
         <div className="min-h-[184px] flex flex-col items-center justify-center">
           <div className="min-h-[92px]   w-full flex flex-col items-start justify-start border-b border-l border-r p-[12px] gap-[4px]">

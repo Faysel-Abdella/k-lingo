@@ -41,14 +41,14 @@ const HigherKoreanEbs = () => {
   >([]);
 
   return (
-    <div className="min-h-[100vh] flex flex-col items-center justify-between">
+    <div className="min-h-[100vh] flex flex-col items-center">
       <Header />
       <hr className="w-full border-t-1 border-[rgb(207,212,218)]" />
 
       {/* Sidebar and the right side */}
-      <div className="flex flex-row gap-4 items-start w-[75%] max-md:justify-start max-md:items-center max-lg:w-[85%] max-md:w-full">
+      <div className="flex flex-row w-[75%] items-start max-md:justify-start max-md:items-start max-lg:w-[85%] max-md:w-full gap-[10px]">
         {/* SideBar */}
-        <Sidebar width="w-[25%]" />
+        <Sidebar width="w-[25%] max-md:w-[30%] max-sm:w-[50%]" />
 
         {/* RightSide */}
         <div className="flex flex-col items-start justify-start w-[75%] max-md:w-[100%] h-auto py-[60px] gap-[40px]">

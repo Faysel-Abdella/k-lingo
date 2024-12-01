@@ -48,7 +48,7 @@ const AdvancedKorean = () => {
       {/* Sidebar and the right side */}
       <div className="flex flex-row w-[75%] items-start max-md:justify-start max-md:items-start max-lg:w-[85%] max-md:w-full gap-[10px]">
         {/* SideBar */}
-        <Sidebar width="w-[25%]" />
+        <Sidebar width="w-[25%] max-md:w-[30%] max-sm:w-[50%]" />
 
         {/* RightSide */}
         <div className="flex flex-col items-start justify-start w-[75%] max-md:w-[100%] h-auto py-[60px] gap-[40px]">
