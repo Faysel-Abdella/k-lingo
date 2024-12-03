@@ -11,7 +11,7 @@ import {
   AccordionItem,
 } from "@nextui-org/react";
 
-const purchaseTicket = () => {
+const PurchaseTicket = () => {
   const [selectedKeys, setSelectedKeys] = React.useState(new Set(["1"]));
 
   const handleSelectionChange = (keys: any) => {
@@ -298,4 +298,4 @@ const purchaseTicket = () => {
   );
 };
 
-export default purchaseTicket;
+export default PurchaseTicket;

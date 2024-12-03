@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 
 import Image from "next/image";
+import Footer from "@/components/Footer";
 
 const HomePage = () => {
   return (
