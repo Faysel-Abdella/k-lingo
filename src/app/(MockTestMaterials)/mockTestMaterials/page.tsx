@@ -184,41 +184,43 @@ const MockTestMaterials = () => {
           </div>
 
           {/* Bottom  */}
-          <div className="w-full gap-[24px]">
-            <article className="">
+          <div className="max-md:w-full max-md:overflow-x-scroll gap-[24px]">
+            <article>
               <Table
                 aria-label="Data Table"
                 shadow="none"
                 classNames={{
                   th: [
-                    "relative px-[40px] py-[10px] font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A] w-full min-h-[41px] text-center",
+                    "relative  py-[10px]  font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A]  h-[41px] text-center",
                     "after:content-[''] after:absolute after:right-0 after:top-2 after:bottom-2 after:w-[1px] after:bg-gray-300",
                   ],
                   td: [
-                    "py-[10px] w-full min-h-[40px] px-[20px] text-[14px] text-center font-normal text-base text-[#363941] ",
+                    "py-[10px]  h-[40px] px-5 text-[14px] text-center font-normal text-base text-[#363941] ",
                   ],
                 }}
                 bottomContent={
                   <div className="flex flex-col w-full">
-                    <div className="flex flex-row items-center justify-between  w-[462px] min-h-[42px] mb-4">
-                      <Button className="w-[221px] min-h-[42px] font-bold rounded-md py-[10px] px-[24px] bg-[#42A8FD] text-white">
-                        <Image
-                          src="/assets/Icons/whiteBag.svg"
-                          alt="Clip Image"
-                          width={20}
-                          height={20}
-                        />
-                        선택파일 장바구니 담기
-                      </Button>
-                      <Button className="w-[221px] min-h-[42px] font-bold rounded-md py-[10px] px-[20px] bg-[#42A8FD] text-white">
-                        <Image
-                          src="/assets/Icons/downloadIcon.svg"
-                          alt="Clip Image"
-                          width={20}
-                          height={20}
-                        />
-                        선택파일 다운로드
-                      </Button>
+                    <div className="flex items-center justify-center">
+                      <div className="flex flex-row items-center gap-5 w-[462px] min-h-[42px] mb-4">
+                        <Button className="w-[221px] min-h-[42px] font-bold rounded-md py-[10px] px-[24px] bg-[#42A8FD] text-white">
+                          <Image
+                            src="/assets/Icons/whiteBag.svg"
+                            alt="Clip Image"
+                            width={20}
+                            height={20}
+                          />
+                          선택파일 장바구니 담기
+                        </Button>
+                        <Button className="w-[221px] min-h-[42px] font-bold rounded-md py-[10px] px-[20px] bg-[#42A8FD] text-white">
+                          <Image
+                            src="/assets/Icons/downloadIcon.svg"
+                            alt="Clip Image"
+                            width={20}
+                            height={20}
+                          />
+                          선택파일 다운로드
+                        </Button>
+                      </div>
                     </div>
 
                     <div className="flex justify-center w-full">
@@ -236,7 +238,7 @@ const MockTestMaterials = () => {
                 }
               >
                 <TableHeader>
-                  <TableColumn className="flex justify-center items-center">
+                  <TableColumn className="flex justify-center items-center px-8">
                     <Checkbox
                       onClick={() => {
                         if (allListCheckedPageNumbers.includes(page)) {
@@ -269,29 +271,13 @@ const MockTestMaterials = () => {
                     ></Checkbox>
                   </TableColumn>
 
-                  <TableColumn>
-                    <span className="w-[55px]">번호</span>
-                  </TableColumn>
-                  <TableColumn>
-                    <span className="w-[100px]">제목</span>
-                  </TableColumn>
-                  <TableColumn>
-                    <span className="w-[65px]">작성자</span>
-                  </TableColumn>
-                  <TableColumn>
-                    <span className="w-[21px]">쪽수</span>
-                  </TableColumn>
-                  <TableColumn>
-                    <span className="w-[21px]">연회원 점수</span>
-                  </TableColumn>
-                  <TableColumn>
-                    <span className="w-[21px]">포인트</span>
-                  </TableColumn>
-                  <TableColumn>
-                    <span className="w-[90px]">게시판</span>
-                  </TableColumn>
-
-                  {/* <TableColumn>상세보기</TableColumn> */}
+                  <TableColumn>번호</TableColumn>
+                  <TableColumn>제목</TableColumn>
+                  <TableColumn>작성자</TableColumn>
+                  <TableColumn>쪽수</TableColumn>
+                  <TableColumn>연회원 점수</TableColumn>
+                  <TableColumn>포인트</TableColumn>
+                  <TableColumn>게시판</TableColumn>
                 </TableHeader>
                 <TableBody>
                   {items.map((row) => (
@@ -312,13 +298,13 @@ const MockTestMaterials = () => {
                         ></Checkbox>
                       </TableCell>
                       <TableCell>
-                        <span className="text-[#868F9A] w-[50px]">
+                        <span className="text-[#868F9A] w-[50px] text-nowrap">
                           {row.number}
                         </span>
                       </TableCell>
                       <TableCell>
-                        <div className="flex w-[311px] items-start justify-start gap-2">
-                          <span>{row.title}</span>
+                        <div className="flex w-[311px] justify-center items-center gap-2">
+                          <span className="text-nowrap">{row.title}</span>
                           <Image
                             src="/assets/Icons/Attach.svg"
                             alt="Clip Image"
@@ -328,23 +314,19 @@ const MockTestMaterials = () => {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <span className="text-[#868F9A] w-[60px]">
+                        <span className="text-[#868F9A] text-nowrap">
                           {row.author}
                         </span>
                       </TableCell>
-                      <TableCell className="w-[21px]">
-                        <span className="w-[21px]">{row.numberOfPages}</span>
+                      <TableCell>
+                        <span>{row.numberOfPages}</span>
                       </TableCell>
-                      <TableCell className="w-[21px]">
-                        <span className="w-[21px]">
-                          {row.annualMemberScore}
-                        </span>
+                      <TableCell>
+                        <span>{row.annualMemberScore}</span>
                       </TableCell>
-                      <TableCell className="w-[21px]">
-                        <span className="w-[21px]">{row.point}</span>
-                      </TableCell>
-                      <TableCell className="w-[80px]">
-                        <span className="text-[#868F9A] w-[100px]">
+                      <TableCell className="text-nowrap">{row.point}</TableCell>
+                      <TableCell>
+                        <span className="text-[#868F9A] text-nowrap">
                           {row.noticeBoard}
                         </span>
                       </TableCell>

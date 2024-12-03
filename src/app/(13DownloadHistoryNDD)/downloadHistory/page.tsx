@@ -72,7 +72,7 @@ const TicketAndPaymentDetails = () => {
             <h3 className="text-[20px] font-bold">연회원 이용권</h3>
           </div>
 
-          <div className="w-full min-h-[484px]">
+          <div className="w-full min-h-[484px]  max-md:overflow-x-scroll">
             <article className="m-0">
               <Table
                 aria-label="Data Table"
@@ -113,7 +113,7 @@ const TicketAndPaymentDetails = () => {
                       <TableCell>{row.number}</TableCell>
                       <TableCell>
                         <div className="flex items-center justify-center gap-2">
-                          <span>{row.title}</span>
+                          <span className="text-nowrap">{row.title}</span>
                           <Image
                             src="/assets/Icons/Attach.svg"
                             alt="Clip Image"
@@ -122,13 +122,15 @@ const TicketAndPaymentDetails = () => {
                           />
                         </div>
                       </TableCell>
-                      <TableCell>{row.author}</TableCell>
+                      <TableCell className="text-nowrap">
+                        {row.author}
+                      </TableCell>
                       <TableCell>{row.numberOfPages}</TableCell>
                       <TableCell>{row.annualMemberScore}</TableCell>
                       <TableCell>{row.point}</TableCell>
                       <TableCell>
                         <div className="flex items-center justify-center gap-2">
-                          <span className="text-[#42A8FD]">
+                          <span className="text-[#42A8FD] text-nowrap">
                             {row.reDownload}
                           </span>
                           <span className="text-[10px] text-[#868F9A]">

@@ -8,7 +8,6 @@ import { Checkbox, Button } from "@nextui-org/react";
 import { BulletInBoardT1 } from "@/assets/BulletInBoardT1";
 import Image from "next/image";
 import InputNoLabel from "@/components/InputNoLable";
-import DropDown from "@/components/DropDown";
 
 import {
   Table,
@@ -87,38 +86,23 @@ const BulletInBoardAdmin = () => {
                 글쓰기
               </Button>
             </div>
-            <div className="w-full gap-[24px] overflow-x-auto">
-              <article className="w-full">
+
+            <div className="max-md:w-full max-md:overflow-x-scroll gap-[24px]">
+              <article>
                 <Table
                   aria-label="Data Table"
                   shadow="none"
                   classNames={{
-                    wrapper: "max-w-full  ",
+                    th: [
+                      "relative  py-[10px]  font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A]  h-[41px] text-center",
+                      "after:content-[''] after:absolute after:right-0 after:top-2 after:bottom-2 after:w-[1px] after:bg-gray-300",
+                    ],
+                    td: [
+                      "py-[10px]  h-[40px] px-5 text-[14px] text-center font-normal text-base text-[#363941] ",
+                    ],
                   }}
                   bottomContent={
                     <div className="flex flex-col items-center justify-center pt-2 w-full gap-[40px]">
-                      {/* Existing Button Container */}
-                      {/* <div className="flex flex-row items-center justify-between w-[462px] min-h-[42px] mb-4">
-                                            <Button className="w-[221px] min-h-[42px] font-bold rounded-md py-[10px] px-[24px] bg-[#42A8FD] text-white flex items-center">
-                                                <Image
-                                                    src="/assets/Icons/whiteBag.svg"
-                                                    alt="Clip Image"
-                                                    width={20}
-                                                    height={20}
-                                                />
-                                                선택파일 장바구니 담기
-                                            </Button>
-                                            <Button className="w-[221px] min-h-[42px] font-bold rounded-md py-[10px] px-[20px] bg-[#42A8FD] text-white flex items-center">
-                                                <Image
-                                                    src="/assets/Icons/downloadIcon.svg"
-                                                    alt="Clip Image"
-                                                    width={20}
-                                                    height={20}
-                                                />
-                                                선택파일 다운로드
-                                            </Button>
-                                        </div> */}
-
                       <Pagination
                         isCompact
                         showControls
@@ -146,7 +130,7 @@ const BulletInBoardAdmin = () => {
                   }
                 >
                   <TableHeader className="border-b border-gray-300">
-                    <TableColumn className="flex justify-center gap-10 items-center border-gray-300">
+                    <TableColumn className="flex justify-center items-center px-8">
                       <Checkbox
                         onClick={() => {
                           if (allListCheckedPageNumbers.includes(page)) {
@@ -177,104 +161,14 @@ const BulletInBoardAdmin = () => {
                         className="size-[14px] rounded-[2px] bg-transparent"
                         isSelected={allListCheckedPageNumbers.includes(page)}
                       />
-                      <div className="relative bottom-0.5">
-                        <svg
-                          width="1"
-                          height="25"
-                          viewBox="0 0 1 17"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect width="1" height="25" fill="#CFD4DA" />
-                        </svg>
-                      </div>
                     </TableColumn>
 
-                    <TableColumn className="gap-4">
-                      <div className="flex items-center justify-center">
-                        <span className="">번호</span>
-                        <div className="relative bottom-0.5">
-                          <svg
-                            width="1"
-                            height="25"
-                            viewBox="0 0 1 17"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect width="1" height="25" fill="#CFD4DA" />
-                          </svg>
-                        </div>
-                      </div>
-                    </TableColumn>
-                    <TableColumn className="">
-                      <div className="flex items-center justify-center">
-                        <span className="">제목</span>
-
-                        <div className="relative bottom-0.5">
-                          <svg
-                            width="1"
-                            height="25"
-                            viewBox="0 0 1 17"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect width="1" height="25" fill="#CFD4DA" />
-                          </svg>
-                        </div>
-                      </div>
-                    </TableColumn>
-                    <TableColumn className="">
-                      <div className="flex items-center justify-center">
-                        <span className="">작성자</span>
-
-                        <div className="relative bottom-0.5">
-                          <svg
-                            width="1"
-                            height="25"
-                            viewBox="0 0 1 17"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect width="1" height="25" fill="#CFD4DA" />
-                          </svg>
-                        </div>
-                      </div>
-                    </TableColumn>
-                    <TableColumn className="">
-                      <div className="flex items-center justify-center gap-4">
-                        <span className="">쪽수</span>
-                        <div className="relative bottom-0.5">
-                          <svg
-                            width="1"
-                            height="25"
-                            viewBox="0 0 1 17"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect width="1" height="25" fill="#CFD4DA" />
-                          </svg>
-                        </div>
-                      </div>
-                    </TableColumn>
-                    <TableColumn className="">
-                      <div className="flex items-center justify-center gap-12">
-                        <span className="">연회원 점수</span>
-                        <div className="relative bottom-0.5 ">
-                          <svg
-                            width="1"
-                            height="25"
-                            viewBox="0 0 1 17"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect width="1" height="25" fill="#CFD4DA" />
-                          </svg>
-                        </div>
-                      </div>
-                    </TableColumn>
-                    <TableColumn>
-                      <span className="">포인트</span>
-                    </TableColumn>
+                    <TableColumn>번호</TableColumn>
+                    <TableColumn>제목</TableColumn>
+                    <TableColumn>작성자</TableColumn>
+                    <TableColumn>쪽수</TableColumn>
+                    <TableColumn>연회원 점수</TableColumn>
+                    <TableColumn>포인트</TableColumn>
                   </TableHeader>
 
                   <TableBody>
@@ -301,13 +195,14 @@ const BulletInBoardAdmin = () => {
                           ></Checkbox>
                         </TableCell>
                         <TableCell>
-                          <span className="text-[#868F9A] w-[50px]">
-                            {row.number}
-                          </span>
+                          <span className="text-[#868F9A] ">{row.number}</span>
                         </TableCell>
                         <TableCell>
                           <div className="flex  items-start justify-start gap-2">
-                            <span className="text-[14px]"> {row.title} </span>
+                            <span className="text-[14px] text-nowrap">
+                              {" "}
+                              {row.title}{" "}
+                            </span>
 
                             <Image
                               src="/assets/Icons/Attach.svg"
@@ -318,28 +213,19 @@ const BulletInBoardAdmin = () => {
                           </div>
                         </TableCell>
                         <TableCell>
-                          <span className="text-[#868F9A]">{row.author}</span>
-                        </TableCell>
-                        <TableCell className="w-[21px]">
-                          <span className="w-[21px]">{row.numberOfPages}</span>
-                        </TableCell>
-                        <TableCell className="w-[21px]">
-                          <span className="w-[21px]">
-                            {row.annualMemberScore}
+                          <span className="text-[#868F9A] text-nowrap">
+                            {row.author}
                           </span>
                         </TableCell>
-                        <TableCell className="w-[21px]">
-                          <span className="w-[21px]">{row.point}</span>
+                        <TableCell>
+                          <span>{row.numberOfPages}</span>
                         </TableCell>
-
-                        {/* <TableCell>
-                                    <Link
-                                    href="/admin/membership/membership-management/1"
-                                    className="text-mainPurple underline underline-offset-2"
-                                    >
-                                    {row.viewDetails}
-                                    </Link>
-                                </TableCell> */}
+                        <TableCell>
+                          <span>{row.annualMemberScore}</span>
+                        </TableCell>
+                        <TableCell>
+                          <span>{row.point}</span>
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

@@ -182,41 +182,43 @@ const HighSchoolMaterials = () => {
           </div>
 
           {/* Bottom  */}
-          <div className=" w-full gap-[24px]">
+          <div className="  gap-[24px] max-md:w-full max-md:overflow-x-scroll">
             <article className="">
               <Table
                 aria-label="Data Table"
                 shadow="none"
                 classNames={{
                   th: [
-                    "relative px-[40px] py-[10px] font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A] w-full h-[41px] text-center",
+                    "relative  py-[10px] font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A]  h-[41px] text-center",
                     "after:content-[''] after:absolute after:right-0 after:top-2 after:bottom-2 after:w-[1px] after:bg-gray-300",
                   ],
                   td: [
-                    "py-[10px] w-full h-[40px] px-[20px] text-[14px] text-center font-normal text-base text-[#363941] ",
+                    "  h-[40px]  text-[14px] text-center font-normal text-base text-[#363941] ",
                   ],
                 }}
                 bottomContent={
                   <div className="flex flex-col w-full">
-                    <div className="flex flex-row items-center justify-between  w-[462px] h-[42px] mb-4">
-                      <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[24px] bg-[#42A8FD] text-white">
-                        <Image
-                          src="/assets/Icons/whiteBag.svg"
-                          alt="Clip Image"
-                          width={20}
-                          height={20}
-                        />
-                        선택파일 장바구니 담기
-                      </Button>
-                      <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[20px] bg-[#42A8FD] text-white">
-                        <Image
-                          src="/assets/Icons/downloadIcon.svg"
-                          alt="Clip Image"
-                          width={20}
-                          height={20}
-                        />
-                        선택파일 다운로드
-                      </Button>
+                    <div className="flex items-center justify-center">
+                      <div className="flex flex-row items-center gap-5  w-[462px] h-[42px] mb-4">
+                        <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[24px] bg-[#42A8FD] text-white">
+                          <Image
+                            src="/assets/Icons/whiteBag.svg"
+                            alt="Clip Image"
+                            width={20}
+                            height={20}
+                          />
+                          선택파일 장바구니 담기
+                        </Button>
+                        <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[20px] bg-[#42A8FD] text-white">
+                          <Image
+                            src="/assets/Icons/downloadIcon.svg"
+                            alt="Clip Image"
+                            width={20}
+                            height={20}
+                          />
+                          선택파일 다운로드
+                        </Button>
+                      </div>
                     </div>
 
                     <div className="flex justify-center w-full">
@@ -234,7 +236,7 @@ const HighSchoolMaterials = () => {
                 }
               >
                 <TableHeader>
-                  <TableColumn className="flex justify-center items-center">
+                  <TableColumn className="flex justify-center items-center px-8">
                     <Checkbox
                       onClick={() => {
                         if (allListCheckedPageNumbers.includes(page)) {
@@ -268,25 +270,25 @@ const HighSchoolMaterials = () => {
                   </TableColumn>
 
                   <TableColumn>
-                    <span className="w-[55px]">번호</span>
+                    <span>번호</span>
                   </TableColumn>
                   <TableColumn>
-                    <span className="w-[320px]">제목</span>
+                    <span>제목</span>
                   </TableColumn>
                   <TableColumn>
-                    <span className="w-[65px]">작성자</span>
+                    <span>작성자</span>
                   </TableColumn>
                   <TableColumn>
-                    <span className="w-[21px]">쪽수</span>
+                    <span>쪽수</span>
                   </TableColumn>
                   <TableColumn>
-                    <span className="w-[21px]">연회원 점수</span>
+                    <span>연회원 점수</span>
                   </TableColumn>
                   <TableColumn>
-                    <span className="w-[21px]">포인트</span>
+                    <span>포인트</span>
                   </TableColumn>
                   <TableColumn>
-                    <span className="w-[90px]">게시판</span>
+                    <span>게시판</span>
                   </TableColumn>
 
                   {/* <TableColumn>상세보기</TableColumn> */}
@@ -315,8 +317,8 @@ const HighSchoolMaterials = () => {
                         </span>
                       </TableCell>
                       <TableCell>
-                        <div className="flex w-[311px] items-start justify-start gap-2">
-                          <span>{row.title}</span>
+                        <div className="flex  items-center justify-center gap-2">
+                          <span className="text-nowrap">{row.title}</span>
                           <Image
                             src="/assets/Icons/Attach.svg"
                             alt="Clip Image"
@@ -326,35 +328,24 @@ const HighSchoolMaterials = () => {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <span className="text-[#868F9A] w-[60px]">
+                        <span className="text-[#868F9A] text-nowrap ">
                           {row.author}
                         </span>
                       </TableCell>
-                      <TableCell className="w-[21px]">
-                        <span className="w-[21px]">{row.numberOfPages}</span>
+                      <TableCell>
+                        <span>{row.numberOfPages}</span>
                       </TableCell>
-                      <TableCell className="w-[21px]">
-                        <span className="w-[21px]">
-                          {row.annualMemberScore}
-                        </span>
+                      <TableCell>
+                        <span>{row.annualMemberScore}</span>
                       </TableCell>
-                      <TableCell className="w-[21px]">
-                        <span className="w-[21px]">{row.point}</span>
+                      <TableCell>
+                        <span>{row.point}</span>
                       </TableCell>
-                      <TableCell className="w-[80px]">
-                        <span className="text-[#868F9A] w-[100px]">
+                      <TableCell>
+                        <span className="text-[#868F9A] text-nowrap">
                           {row.noticeBoard}
                         </span>
                       </TableCell>
-
-                      {/* <TableCell>
-                                    <Link
-                                    href="/admin/membership/membership-management/1"
-                                    className="text-mainPurple underline underline-offset-2"
-                                    >
-                                    {row.viewDetails}
-                                    </Link>
-                                </TableCell> */}
                     </TableRow>
                   ))}
                 </TableBody>

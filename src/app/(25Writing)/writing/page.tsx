@@ -11,15 +11,6 @@ import InputNoLabel from "@/components/InputNoLable";
 import DropDown from "@/components/DropDown";
 import dynamic from "next/dynamic";
 import { useRef } from "react";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-  Pagination,
-} from "@nextui-org/react";
 
 // Dynamically import the JoditEditor to prevent SSR issues
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });

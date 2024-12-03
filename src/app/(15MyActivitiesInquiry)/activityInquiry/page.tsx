@@ -81,7 +81,7 @@ const ActivityInquiry = () => {
                 문의하기
               </Button>
             </div>
-            <article className="m-0 w-full">
+            <article className="m-0 w-full max-md:overflow-x-scroll">
               <Table
                 aria-label="Data Table"
                 shadow="none"
@@ -116,7 +116,7 @@ const ActivityInquiry = () => {
                 <TableBody>
                   {items.map((row, index) => (
                     <TableRow key={row.id} className="border-b-1">
-                      <TableCell>
+                      <TableCell className="text-nowrap">
                         {index === 0 ? "추가 결제는 없나요?" : row.title}
                       </TableCell>
                       <TableCell>

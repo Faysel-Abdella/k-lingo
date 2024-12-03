@@ -94,36 +94,42 @@ const SearchWithinBullet = () => {
             </div>
 
             {/* Bottom  */}
-            <div className="max-w-full min-h-[795px] gap-[10px]">
+            <div className="max-md:w-full max-md:overflow-x-scroll gap-[24px]">
               <article className="">
                 <Table
                   aria-label="Data Table"
                   shadow="none"
                   classNames={{
-                    wrapper: "min-w-full max-h-full",
+                    th: [
+                      "relative  py-[10px]  font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A] w-full h-[41px] text-center",
+                    ],
+                    td: [
+                      "py-[10px] w-full px-8 h-[40px] text-[14px] text-center font-normal text-base text-[#363941] ",
+                    ],
                   }}
                   bottomContent={
                     <div className="flex flex-col items-center justify-center w-full gap-[40px]">
-                      {/* Existing Button Container */}
-                      <div className="flex flex-row items-center justify-between w-[462px] h-[42px] mb-4">
-                        <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[24px] bg-[#42A8FD] text-white flex items-center">
-                          <Image
-                            src="/assets/Icons/whiteBag.svg"
-                            alt="Clip Image"
-                            width={20}
-                            height={20}
-                          />
-                          선택파일 장바구니 담기
-                        </Button>
-                        <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[20px] bg-[#42A8FD] text-white flex items-center">
-                          <Image
-                            src="/assets/Icons/downloadIcon.svg"
-                            alt="Clip Image"
-                            width={20}
-                            height={20}
-                          />
-                          선택파일 다운로드
-                        </Button>
+                      <div className="flex items-center justify-center">
+                        <div className="flex flex-row items-center gap-5 w-[462px] h-[42px] mb-4">
+                          <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[24px] bg-[#42A8FD] text-white">
+                            <Image
+                              src="/assets/Icons/whiteBag.svg"
+                              alt="Clip Image"
+                              width={20}
+                              height={20}
+                            />
+                            선택파일 장바구니 담기
+                          </Button>
+                          <Button className="w-[221px] h-[42px] font-bold rounded-md py-[10px] px-[20px] bg-[#42A8FD] text-white">
+                            <Image
+                              src="/assets/Icons/downloadIcon.svg"
+                              alt="Clip Image"
+                              width={20}
+                              height={20}
+                            />
+                            선택파일 다운로드
+                          </Button>
+                        </div>
                       </div>
 
                       <Pagination
@@ -135,20 +141,6 @@ const SearchWithinBullet = () => {
                         total={pages}
                         onChange={(page) => setPage(page)}
                       />
-
-                      {/* Input and Button Row */}
-                      {/* <div className="flex flex-row items-center justify-between w-[328px] h-[40px] "> */}
-                      {/* Input Field */}
-                      {/* <InputNoLabel
-                                                placeholder="사미인곡"
-                                                inputParentStyles="w-[252px] rounded-md  px-[16px] h-[40px] "
-                                            /> */}
-
-                      {/* Button */}
-                      {/* <Button className="w-[64px] h-full px-[20px] py-[10px] bg-[#ECEDF1] text-[#868F9A] rounded-md"> */}
-                      {/* 검색 */}
-                      {/* </Button> */}
-                      {/* </div> */}
                     </div>
                   }
                 >
@@ -187,25 +179,23 @@ const SearchWithinBullet = () => {
                     </TableColumn>
 
                     <TableColumn>
-                      <span className="w-[55px]">번호</span>
+                      <span>번호</span>
                     </TableColumn>
                     <TableColumn>
-                      <span className="w-[320px]">제목</span>
+                      <span>제목</span>
                     </TableColumn>
                     <TableColumn>
-                      <span className="w-[65px]">작성자</span>
+                      <span>작성자</span>
                     </TableColumn>
                     <TableColumn>
-                      <span className="w-[21px]">쪽수</span>
+                      <span>쪽수</span>
                     </TableColumn>
                     <TableColumn>
-                      <span className="w-[21px]">연회원 점수</span>
+                      <span>연회원 점수</span>
                     </TableColumn>
                     <TableColumn>
-                      <span className="w-[21px]">포인트</span>
+                      <span>포인트</span>
                     </TableColumn>
-
-                    {/* <TableColumn>상세보기</TableColumn> */}
                   </TableHeader>
                   <TableBody>
                     {items.map((row) => (
@@ -231,16 +221,19 @@ const SearchWithinBullet = () => {
                           ></Checkbox>
                         </TableCell>
                         <TableCell>
-                          <span className="text-[#868F9A] w-[50px]">
-                            {row.number}
-                          </span>
+                          <span className="text-[#868F9A]">{row.number}</span>
                         </TableCell>
                         <TableCell>
-                          <div className="flex w-[311px] items-start justify-start gap-2">
+                          <div className="flex items-start justify-start gap-2">
                             <span>
                               <div className="flex items-center justify-center gap-2">
-                                <span className="text-[#8D64F8]">사미인곡</span>
-                                <span> {row.author} </span>
+                                <span className="text-[#8D64F8] text-nowrap">
+                                  사미인곡
+                                </span>
+                                <span className="text-nowrap">
+                                  {" "}
+                                  {row.author}{" "}
+                                </span>
                               </div>
                             </span>
                             <Image
@@ -252,30 +245,19 @@ const SearchWithinBullet = () => {
                           </div>
                         </TableCell>
                         <TableCell>
-                          <span className="text-[#868F9A] w-[60px]">
+                          <span className="text-[#868F9A] text-nowrap">
                             {row.author}
                           </span>
                         </TableCell>
-                        <TableCell className="w-[21px]">
-                          <span className="w-[21px]">{row.numberOfPages}</span>
+                        <TableCell>
+                          <span>{row.numberOfPages}</span>
                         </TableCell>
-                        <TableCell className="w-[21px]">
-                          <span className="w-[21px]">
-                            {row.annualMemberScore}
-                          </span>
+                        <TableCell>
+                          <span>{row.annualMemberScore}</span>
                         </TableCell>
-                        <TableCell className="w-[21px]">
-                          <span className="w-[21px]">{row.point}</span>
+                        <TableCell>
+                          <span className="text-nowrap">{row.point}</span>
                         </TableCell>
-
-                        {/* <TableCell>
-                                        <Link
-                                        href="/admin/membership/membership-management/1"
-                                        className="text-mainPurple underline underline-offset-2"
-                                        >
-                                        {row.viewDetails}
-                                        </Link>
-                                    </TableCell> */}
                       </TableRow>
                     ))}
                   </TableBody>

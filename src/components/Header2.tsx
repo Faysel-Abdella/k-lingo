@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const Header2: React.FC = () => {
   return (
-    <div className="flex flex-col w-full  max-md:hidden items-center">
+    <div className="flex w-full flex-col max-md:hidden items-center">
       {/* First Layer */}
-      <section className="w-[75%] max-lg:w-[85%] h-[41px] pt-[12px] pb-[12px] gap-[20px] mx-auto">
+      <section className=" w-[75%]  max-lg:w-[85%] h-[41px] pt-[12px] pb-[12px] gap-[20px] mx-auto">
         <div className="flex justify-end items-center">
           <p className="text-right text-gray-500 leading-[16.8px] text-[12px] font-normal mr-4">
             회원가입
@@ -18,6 +18,7 @@ const Header2: React.FC = () => {
       {/* Second Layer with Image */}
       <div className="relative flex items-center justify-center  w-[75%] max-lg:w-[85%]">
         <Image
+          className="w-full"
           src="/assets/Images/header_img.svg"
           alt="Header Image"
           width={1080}

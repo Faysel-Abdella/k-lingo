@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Sidebar6 from "@/components/Sidebar6";
@@ -10,18 +10,21 @@ import Image from "next/image";
 import InputNoLabel from "@/components/InputNoLable";
 import DropDown from "@/components/DropDown";
 import { RadioGroup, Radio } from "@nextui-org/react";
+import dynamic from "next/dynamic";
 
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-  Pagination,
-} from "@nextui-org/react";
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 const DataRegistration = () => {
+  const editor = useRef(null);
+  const config = {
+    readonly: false,
+    uploader: {
+      insertImageAsBase64URI: true, // Upload images as base64 URI
+      url: "your_upload_endpoint_here", // Endpoint to handle image uploads
+    },
+    minHeight: "500px",
+  };
+
   const options = [
     { key: "1", label: "이전글" },
     { key: "2", label: "다음글" },
@@ -100,13 +103,15 @@ const DataRegistration = () => {
                 내용{" "}
               </div>
 
-              <div className="flex items-center w-full min-h-[444px] p-[8px] gap-[10px]">
-                <Image
-                  src="/assets/Images/WritingArea.svg"
-                  alt="Clip Image"
-                  width={725}
-                  height={428}
-                />
+              <div className="flex items-center w-full min-h-[400px] p-[8px]">
+                <div className="w-full">
+                  <JoditEditor
+                    ref={editor}
+                    config={config}
+                    value=""
+                    onChange={(newContent) => console.log(newContent)}
+                  />
+                </div>
               </div>
             </div>
 

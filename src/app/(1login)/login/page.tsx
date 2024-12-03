@@ -7,11 +7,9 @@ import Footer from "@/components/Footer";
 
 const Login = () => {
   return (
-    <div className=" min-h-[100vh] w-full flex flex-col items-center justify-between">
+    <div className=" min-h-[100vh] h-auto flex flex-col items-center justify-between">
       {/* Include Header */}
-      <div className="sm:block hidden">
-        <Header />
-      </div>
+      <Header />
 
       <hr className="w-full border-t-1 border-[rgb(207,212,218)] py-4 sm:py-5 " />
 

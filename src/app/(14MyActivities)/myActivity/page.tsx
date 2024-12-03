@@ -81,7 +81,7 @@ const MyActivities = () => {
             </div>
           </div>
 
-          <div className="w-full min-h-[641px]">
+          <div className="w-full min-h-[641px] max-md:overflow-x-scroll">
             <article className="mt-5">
               <Table
                 aria-label="Data Table"
@@ -118,39 +118,6 @@ const MyActivities = () => {
                 }
               >
                 <TableHeader>
-                  {/* <TableColumn className="flex justify-center items-center"> */}
-                  {/* <Checkbox
-                          onClick={() => {
-                            if (allListCheckedPageNumbers.includes(page)) {
-                              setAllListCheckedPageNumbers(
-                                allListCheckedPageNumbers.filter(
-                                  (number) => number !== page
-                                )
-                              );
-                              setClickedRowIds(
-                                clickedRowIds.filter(
-                                  (id) =>
-                                    !currentData
-                                      .map((item: any) => item.number)
-                                      .includes(id)
-                                )
-                              );
-                            } else {
-                              setClickedRowIds([
-                                ...clickedRowIds,
-                                ...currentData.map((item: any) => item.number),
-                              ]);
-                              setAllListCheckedPageNumbers([
-                                ...allListCheckedPageNumbers,
-                                page,
-                              ]);
-                            }
-                          }}
-                          className={`size-[14px] rounded-[2px] bg-transparent`}
-                          isSelected={allListCheckedPageNumbers.includes(page)}
-                        ></Checkbox> */}
-                  {/* </TableColumn> */}
-
                   <TableColumn>제목</TableColumn>
                   <TableColumn>게시판</TableColumn>
                   <TableColumn>작성일</TableColumn>
@@ -163,23 +130,10 @@ const MyActivities = () => {
                 <TableBody>
                   {items.map((row) => (
                     <TableRow key={row.id} className="border-b-1">
-                      {/* <TableCell>
-                            <Checkbox
-                              className={`text-center size-[14px] rounded-[2px]`}
-                              onClick={() => {
-                                if (clickedRowIds.includes(row.number)) {
-                                  setClickedRowIds(
-                                    clickedRowIds.filter((id) => id !== row.number)
-                                  );
-                                } else {
-                                  setClickedRowIds([...clickedRowIds, row.number]);
-                                }
-                              }}
-                              isSelected={clickedRowIds.includes(row.number)}
-                            ></Checkbox> */}
-                      {/* </TableCell> */}
-                      <TableCell>{row.title}</TableCell>
-                      <TableCell>{row.noticeBoard}</TableCell>
+                      <TableCell className="text-nowrap">{row.title}</TableCell>
+                      <TableCell className="text-nowrap">
+                        {row.noticeBoard}
+                      </TableCell>
                       <TableCell>
                         <span className="text-[#868F9A]">
                           {row.creationDate}
@@ -188,15 +142,6 @@ const MyActivities = () => {
                       <TableCell>{row.great}</TableCell>
                       <TableCell>{row.comment}</TableCell>
                       <TableCell>{row.views}</TableCell>
-
-                      {/* <TableCell>
-                            <Link
-                              href="/admin/membership/membership-management/1"
-                              className="text-mainPurple underline underline-offset-2"
-                            >
-                              {row.viewDetails}
-                            </Link>
-                          </TableCell> */}
                     </TableRow>
                   ))}
                 </TableBody>

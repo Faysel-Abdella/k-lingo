@@ -18,11 +18,7 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <NextUIProvider>
-          {/* HEADER  */}
-          {children}
-          {/* FOOTER  */}
-        </NextUIProvider>
+        <NextUIProvider>{children}</NextUIProvider>
       </body>
     </html>
   );

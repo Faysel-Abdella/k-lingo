@@ -7,8 +7,6 @@ import Sidebar from "@/components/Sidebar";
 import { Checkbox, Button } from "@nextui-org/react";
 import { ShoppingCartTable } from "@/assets/shoppingCart";
 import Image from "next/image";
-import InputNoLabel from "@/components/InputNoLable";
-import DropDown from "@/components/DropDown";
 
 import {
   Table,
@@ -72,44 +70,23 @@ const ShoppingCartAfterPoints = () => {
                 </Button>
               </div>
 
-              <div className="w-full gap-[24px] overflow-x-auto">
-                <article className="w-full">
+              <div className="max-md:w-full max-md:overflow-x-scroll gap-[24px]">
+                <article>
                   <Table
                     aria-label="Data Table"
                     shadow="none"
                     classNames={{
-                      wrapper: "max-w-full",
+                      th: [
+                        "relative  py-[10px]  font-bold text-[14px] bg-[#F3F4F6] text-[#868F9A]  h-[41px] text-center",
+                        "after:content-[''] after:absolute after:right-0 after:top-2 after:bottom-2 after:w-[1px] after:bg-gray-300",
+                      ],
+                      td: [
+                        "py-[10px]  h-[40px] px-5 text-[14px] text-center font-normal text-base text-[#363941] ",
+                      ],
                     }}
-                    // bottomContent={
-                    //     <div className="flex flex-col items-center justify-center pt-2 w-full gap-[40px]">
-
-                    //         {/* <Pagination
-                    //             isCompact
-                    //             showControls
-                    //             showShadow
-                    //             color="primary"
-                    //             page={page}
-                    //             total={pages}
-                    //             onChange={(page) => setPage(page)}
-                    //         /> */}
-
-                    //         {/* Input and Button Row */}
-                    //         <div className="flex flex-row items-center justify-between w-[328px] min-h-[40px] ">
-                    //             <InputNoLabel
-                    //                 placeholder="사미인곡"
-                    //                 inputParentStyles="w-[252px] rounded-md  px-[16px] min-h-[40px] "
-                    //             />
-
-                    //             {/* Button */}
-                    //             <Button className="w-[64px] h-full px-[20px] py-[10px] bg-[#ECEDF1] text-[#868F9A] rounded-md">
-                    //                 검색
-                    //             </Button>
-                    //         </div>
-                    //     </div>
-                    // }
                   >
                     <TableHeader className="border-b border-gray-300">
-                      <TableColumn className="flex justify-center gap-10 items-center border-r  border-gray-300">
+                      <TableColumn className="flex justify-center items-center px-8">
                         <Checkbox
                           onClick={() => {
                             if (allListCheckedPageNumbers.includes(page)) {
@@ -142,39 +119,13 @@ const ShoppingCartAfterPoints = () => {
                         />
                       </TableColumn>
 
-                      <TableColumn className="gap-1 border-r border-[#CFD4DA]">
-                        <div className="flex flex-row items-center justify-center">
-                          <span className="w-[41px]">번호</span>
-                        </div>
-                      </TableColumn>
-                      <TableColumn className=" border-r border-[#CFD4DA]">
-                        <div className="flex flex-row items-center justify-between">
-                          <span>제목</span>
-                        </div>
-                      </TableColumn>
-                      <TableColumn className=" border-r border-[#CFD4DA]">
-                        <div className="flex items-center  justify-between">
-                          <span className="w-[60px]">작성자</span>
-                        </div>
-                      </TableColumn>
-                      <TableColumn className="border-r border-[#CFD4DA]">
-                        <div className="flex items-center justify-center gap-4">
-                          <span className="w-[21px]">쪽수</span>
-                        </div>
-                      </TableColumn>
-                      <TableColumn className="border-r border-[#CFD4DA]">
-                        <div className="flex items-center justify-center gap-12">
-                          <span className="w-[54px]">연회원 점수</span>
-                        </div>
-                      </TableColumn>
-                      <TableColumn className="border-r border-[#CFD4DA]">
-                        <div className="flex items-center justify-center gap-12">
-                          <span className="w-[31px]">포인트</span>
-                        </div>
-                      </TableColumn>
-                      <TableColumn>
-                        <span className="w-[21px]">게시판 출처</span>
-                      </TableColumn>
+                      <TableColumn>번호</TableColumn>
+                      <TableColumn>제목</TableColumn>
+                      <TableColumn>작성자</TableColumn>
+                      <TableColumn>쪽수</TableColumn>
+                      <TableColumn>연회원 점수</TableColumn>
+                      <TableColumn>포인트</TableColumn>
+                      <TableColumn>게시판 출처</TableColumn>
                     </TableHeader>
 
                     <TableBody>
@@ -200,16 +151,13 @@ const ShoppingCartAfterPoints = () => {
                               isSelected={clickedRowIds.includes(row.number)}
                             ></Checkbox>
                           </TableCell>
-                          <TableCell>
-                            <span className="">
-                              <span className="text-[#868F9A] text-[14px]">
-                                {row.number}
-                              </span>
-                            </span>
-                          </TableCell>
+                          <TableCell>{row.number}</TableCell>
                           <TableCell>
                             <div className="flex items-start justify-start gap-2">
-                              <span className="text-[14px]"> {row.title} </span>
+                              <span className="text-[14px] text-nowrap">
+                                {" "}
+                                {row.title}{" "}
+                              </span>
 
                               <Image
                                 src="/assets/Icons/Attach.svg"
@@ -219,48 +167,17 @@ const ShoppingCartAfterPoints = () => {
                               />
                             </div>
                           </TableCell>
-                          <TableCell>
-                            <div className=" ">
-                              <span className="text-[#868F9A] text-[14px]">
-                                {row.author}
-                              </span>
-                            </div>
+                          <TableCell className="text-nowrap">
+                            {row.author}
                           </TableCell>
-                          <TableCell>
-                            <div className="">
-                              <span className="text-[14px]">
-                                {row.numberOfPages}
-                              </span>
-                            </div>
+                          <TableCell>{row.numberOfPages}</TableCell>
+                          <TableCell className="text-nowrap">
+                            {row.annualMemberScore}
                           </TableCell>
-                          <TableCell>
-                            <div className="">
-                              <span className="text-[14px]">
-                                {row.annualMemberScore}
-                              </span>
-                            </div>
+                          <TableCell>{row.point}</TableCell>
+                          <TableCell className="text-nowrap">
+                            {row.bulletInboardSource}
                           </TableCell>
-                          <TableCell>
-                            <div className="">
-                              <span className="text-[14px]">{row.point}</span>
-                            </div>
-                          </TableCell>
-                          <TableCell>
-                            <div className="">
-                              <span className="text-[#868F9A] text-[14px]">
-                                {row.bulletInboardSource}
-                              </span>
-                            </div>
-                          </TableCell>
-
-                          {/* <TableCell>
-                                    <Link
-                                    href="/admin/membership/membership-management/1"
-                                    className="text-mainPurple underline underline-offset-2"
-                                    >
-                                    {row.viewDetails}
-                                    </Link>
-                                </TableCell> */}
                         </TableRow>
                       ))}
                     </TableBody>

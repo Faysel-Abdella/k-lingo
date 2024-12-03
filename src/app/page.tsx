@@ -2,53 +2,12 @@
 
 import { useState, useMemo } from "react";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Sidebar from "@/components/Sidebar";
-import { Checkbox, Button } from "@nextui-org/react";
-import { ShoppingCartTable } from "@/assets/shoppingCart";
-import Image from "next/image";
-import InputNoLabel from "@/components/InputNoLable";
-import DropDown from "@/components/DropDown";
-import { RadioGroup, Radio } from "@nextui-org/react";
 
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-  Pagination,
-} from "@nextui-org/react";
+import Sidebar from "@/components/Sidebar";
+
+import Image from "next/image";
 
 const HomePage = () => {
-  const options = [
-    { key: "1", label: "이전글" },
-    { key: "2", label: "다음글" },
-  ];
-  // Pagination Logic
-  const [page, setPage] = useState(1);
-
-  const rowsPerPage = 4;
-
-  const pages = Math.ceil(ShoppingCartTable.length / rowsPerPage);
-
-  const [currentData, setCurrentData] = useState<any>();
-
-  const items = useMemo(() => {
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-
-    setCurrentData(ShoppingCartTable.slice(start, end));
-    return ShoppingCartTable.slice(start, end);
-  }, [page, rowsPerPage]);
-
-  // Selection Logic
-  const [clickedRowIds, setClickedRowIds] = useState<number[]>([]);
-  const [allListCheckedPageNumbers, setAllListCheckedPageNumbers] = useState<
-    number[]
-  >([]);
-
   return (
     <div className="min-h-[100vh] h-auto flex flex-col items-center relative">
       <Header />

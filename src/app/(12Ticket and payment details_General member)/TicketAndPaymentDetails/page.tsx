@@ -102,7 +102,7 @@ const TicketAndPaymentDetails = () => {
             <h3 className="text-[20px] font-bold">연회원 이용권</h3>
           </div>
 
-          <div className="w-full min-h-[484px] overflow-x-scroll">
+          <div className="w-full min-h-[484px] max-md:overflow-x-scroll">
             <article className="m-0">
               <Table
                 aria-label="Data Table"
@@ -137,7 +137,9 @@ const TicketAndPaymentDetails = () => {
                 <TableBody>
                   {items.map((row) => (
                     <TableRow key={row.id} className="border-b-1">
-                      <TableCell>{row.detail}</TableCell>
+                      <TableCell className="text-nowrap">
+                        {row.detail}
+                      </TableCell>
                       <TableCell>{row.paymentDate}</TableCell>
                       <TableCell>{row.paymentAmount}</TableCell>
                       <TableCell>{row.paymentMethod}</TableCell>
