@@ -1,10 +1,25 @@
+"use client";
+
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InputWithLabel from "@/components/InputWithLabel";
-import { Button } from "@nextui-org/react";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  useDisclosure,
+} from "@nextui-org/react";
 
 const ManageInfo = () => {
+  const {
+    isOpen: isUnsubscribeBtn,
+    onOpen: onUnsubscribeBtn,
+    onOpenChange: onUnsubscribeBtnChange,
+  } = useDisclosure();
+
   return (
     <div className="min-h-[1117px] max-md:h-[100vh] flex flex-col items-center justify-between">
       {/* Include Header */}
@@ -44,6 +59,7 @@ const ManageInfo = () => {
                 placeholder="abc123"
                 inputParentStyles="w-full min-h-[40px]"
                 type="text"
+                disabled={true}
               />
 
               <InputWithLabel
@@ -71,6 +87,7 @@ const ManageInfo = () => {
                 placeholder="abc@aaa.com"
                 inputParentStyles="w-full min-h-[40px]"
                 type="text"
+                disabled={true}
               />
 
               <InputWithLabel
@@ -80,6 +97,7 @@ const ManageInfo = () => {
                 placeholder="홍길동"
                 inputParentStyles="w-full min-h-[40px]"
                 type="text"
+                disabled={true}
               />
 
               <InputWithLabel
@@ -89,6 +107,7 @@ const ManageInfo = () => {
                 placeholder="010-1111-2222"
                 inputParentStyles="w-full min-h-[40px]"
                 type="text"
+                disabled={true}
               />
 
               <InputWithLabel
@@ -98,6 +117,7 @@ const ManageInfo = () => {
                 placeholder="2008.01.01"
                 inputParentStyles="w-full min-h-[40px]"
                 type="text"
+                disabled={true}
               />
 
               <InputWithLabel
@@ -117,7 +137,12 @@ const ManageInfo = () => {
                 수정하기
               </Button>
 
-              <p className="text-[14px] text-[#868F9A] pb-2">탈퇴하기</p>
+              <button
+                className="text-[14px] text-[#868F9A] pb-2"
+                onClick={onUnsubscribeBtn}
+              >
+                탈퇴하기
+              </button>
             </div>
           </div>
         </div>
@@ -125,6 +150,60 @@ const ManageInfo = () => {
 
       {/* Footer remains at the bottom of the page */}
       <Footer />
+
+      {/* Modal */}
+
+      <Modal
+        isOpen={isUnsubscribeBtn}
+        placement="center"
+        onOpenChange={onUnsubscribeBtnChange}
+        hideCloseButton
+        classNames={{
+          base: ["min-w-[345px] px-10 flex justify-center items-center "],
+          body: ["w-full p-0 flex justify-center items-center"],
+        }}
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalBody>
+                <div className="flex flex-col items-center justify-center">
+                  <h2 className="mt-5 py-3 text-center text-[20px] font-bold text-mainBlack">
+                    탈퇴하기
+                  </h2>
+                </div>
+
+                <div className="mt-3">
+                  <p className="text-[#353A46] text-center">
+                    탈퇴하면 이용기록, 잔여 포인트 등이 삭제 됩니다. 그래도
+                    탈퇴하시겠습니까?
+                  </p>
+                </div>
+
+                <div className="mt-7 flex items-center justify-center gap-4">
+                  <Button
+                    className="rounded-[10px] bg-[#ECEDF1] text-[#868F9A] px-4 py-[12px] text-base font-bold"
+                    onClick={() => {
+                      onUnsubscribeBtnChange();
+                    }}
+                  >
+                    취소
+                  </Button>
+                  <Button
+                    className="rounded-[10px] bg-[#E0F1FF] text-[#ED3D2E] px-4 py-[12px] text-base font-bold"
+                    onClick={() => {
+                      onUnsubscribeBtnChange();
+                    }}
+                  >
+                    탈퇴
+                  </Button>
+                </div>
+              </ModalBody>
+              <ModalFooter></ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 };

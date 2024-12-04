@@ -44,7 +44,9 @@ const InputWithLabel = ({
                 "placeholder:text-[#A1A9A3] placeholder:text-[14px] text-[15px]",
               ],
               inputWrapper: [
-                `${inputStyles}  bg-[#ffffff] border-[1px] border-[#D2D5D6] rounded-[5px] `,
+                `${inputStyles} ${
+                  disabled ? "bg-[#F3F4F6]" : "bg-[#ffffff]"
+                }  border-[1px]  rounded-[5px] `,
               ],
             }}
           />
@@ -55,5 +57,3 @@ const InputWithLabel = ({
 };
 
 export default InputWithLabel;
-
-

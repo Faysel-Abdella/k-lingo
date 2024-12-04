@@ -14,9 +14,27 @@ import {
   TableRow,
   TableCell,
   Pagination,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  useDisclosure,
 } from "@nextui-org/react";
+import Link from "next/link";
 
 const ActivityInquiry = () => {
+  const {
+    isOpen: isAnsweredBtn,
+    onOpen: onAnsweredBtn,
+    onOpenChange: onAnsweredBtnChange,
+  } = useDisclosure();
+
+  const {
+    isOpen: isUnAnsweredBtn,
+    onOpen: onUnAnsweredBtn,
+    onOpenChange: onUnAnsweredBtnChange,
+  } = useDisclosure();
+
   // Pagination Logic
   const [page, setPage] = useState(1);
 
@@ -77,9 +95,11 @@ const ActivityInquiry = () => {
           <div className="flex flex-col w-[75%] min-h-[695px] gap-[5px]">
             <div className="w-full h-[42px] flex flex-row items-center justify-between">
               <h2 className="text-[20px] font-bold">문의 내역</h2>
-              <Button className="w-[76px] h-[42px] py-[8px] px-[14px] bg-[#E0F1FF] text-[#42A8FD]">
-                문의하기
-              </Button>
+              <Link href="/contact-us">
+                <Button className="w-[76px] h-[42px] py-[8px] px-[14px] bg-[#E0F1FF] text-[#42A8FD]">
+                  문의하기
+                </Button>
+              </Link>
             </div>
             <article className="m-0 w-full max-md:overflow-x-scroll">
               <Table
@@ -125,15 +145,18 @@ const ActivityInquiry = () => {
                         </span>
                       </TableCell>
                       <TableCell>
-                        <span
+                        <button
                           className={
                             index === 0
                               ? "text-black font-medium"
                               : "text-[#8D64F8]"
                           }
+                          onClick={
+                            index === 0 ? onUnAnsweredBtn : onAnsweredBtn
+                          }
                         >
                           {index === 0 ? "대기중" : row.situation}
-                        </span>
+                        </button>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -146,6 +169,108 @@ const ActivityInquiry = () => {
 
       {/* Footer remains at the bottom of the page */}
       <Footer />
+
+      {/* Modal For answered */}
+
+      <Modal
+        isOpen={isAnsweredBtn}
+        placement="center"
+        onOpenChange={onAnsweredBtnChange}
+        hideCloseButton
+        classNames={{
+          base: ["min-w-[60%] px-6 pt-4 flex  "],
+          body: [" p-0 flex "],
+        }}
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalBody>
+                <h3 className="text-[#353A46] font-bold text-lg">
+                  재다운로드 관련 문의드려요
+                </h3>
+
+                <p className=" text-[#868F9A] text-sm">
+                  YYYY-MM-DD HH:MM <span>대기중</span>
+                </p>
+
+                <hr className="w-full border-t-1 border-[#CFD4DA]   " />
+
+                <p className="text-[#353A46]">
+                  재다운로드 가능 횟수는 몇 번인가요?
+                </p>
+
+                <div className="mt-10 bg-[#F3F4F6] p-5 rounded-xl">
+                  <h3 className="text-[#353A46] font-bold text-lg">답변</h3>
+
+                  <p className="mt-1 text-sm text-[#353A46]">
+                    안녕하세요. 자유로국어입니다. 답변 텍스트 영역입니다.
+                  </p>
+                </div>
+
+                <div className="mt-10 flex items-center justify-center gap-4">
+                  <Button
+                    className="rounded-[10px] bg-[#ECEDF1] text-[#868F9A] px-4 py-[12px] text-base font-bold"
+                    onClick={() => {
+                      onAnsweredBtnChange();
+                    }}
+                  >
+                    닫기
+                  </Button>
+                </div>
+              </ModalBody>
+              <ModalFooter></ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+
+      {/* Modal For non answered */}
+
+      <Modal
+        isOpen={isUnAnsweredBtn}
+        placement="center"
+        onOpenChange={onUnAnsweredBtnChange}
+        hideCloseButton
+        classNames={{
+          base: ["min-w-[60%] px-6 pt-4 flex  "],
+          body: [" p-0 flex "],
+        }}
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalBody>
+                <h3 className="text-[#353A46] font-bold text-lg">
+                  재다운로드 관련 문의드려요
+                </h3>
+
+                <p className=" text-[#868F9A] text-sm">
+                  YYYY-MM-DD HH:MM <span>대기중</span>
+                </p>
+
+                <hr className="w-full border-t-1 border-[#CFD4DA]   " />
+
+                <p className="text-[#353A46]">
+                  재다운로드 가능 횟수는 몇 번인가요?
+                </p>
+
+                <div className="mt-10 flex items-center justify-center gap-4">
+                  <Button
+                    className="rounded-[10px] bg-[#ECEDF1] text-[#868F9A] px-4 py-[12px] text-base font-bold"
+                    onClick={() => {
+                      onAnsweredBtnChange();
+                    }}
+                  >
+                    닫기
+                  </Button>
+                </div>
+              </ModalBody>
+              <ModalFooter></ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 };

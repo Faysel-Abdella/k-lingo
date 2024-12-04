@@ -15,11 +15,6 @@ import {
   ModalFooter,
   useDisclosure,
   Button,
-  Table,
-  TableHeader,
-  TableRow,
-  TableCell,
-  TableBody,
 } from "@nextui-org/react";
 import dynamic from "next/dynamic";
 import React from "react";

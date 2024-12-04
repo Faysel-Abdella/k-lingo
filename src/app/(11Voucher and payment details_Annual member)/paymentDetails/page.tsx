@@ -2,7 +2,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button, Card, CardBody } from "@nextui-org/react";
+import { Button, Card, CardBody, Tooltip } from "@nextui-org/react";
 import Image from "next/image";
 import { useState, useMemo } from "react";
 import { PaymentData } from "@/assets/paymentDataT1";
@@ -15,9 +15,26 @@ import {
   TableRow,
   TableCell,
   Pagination,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  useDisclosure,
 } from "@nextui-org/react";
 
 const PaymentDetails = () => {
+  const {
+    isOpen: isRefundBtn,
+    onOpen: onRefundBtn,
+    onOpenChange: onRefundBtnChange,
+  } = useDisclosure();
+
+  const {
+    isOpen: isHistoryBtn,
+    onOpen: onHistoryBtn,
+    onOpenChange: onHistoryBtnChange,
+  } = useDisclosure();
+
   // Pagination Logic
   const [page, setPage] = useState(1);
 
@@ -80,10 +97,16 @@ const PaymentDetails = () => {
                         2024.10.01 ~ 2025.09.30 (00일 남음)
                       </span>
                     </div>
-                    <div className="text-[12px] text-[#868F9A]"> 환불하기</div>
+                    <button
+                      className="text-[12px] text-[#868F9A]"
+                      onClick={onRefundBtn}
+                    >
+                      {" "}
+                      환불하기
+                    </button>
                   </div>
 
-                  <div className="flex flex-col  gap-[5px]">
+                  <div className="flex flex-col  gap-[5px] md:w-[20%]">
                     <div className="flex flex-row items-start justify-between w-full">
                       <div className="text-[14px]">사용한 점수</div>
                       <div className="text-[14px]">10점</div>
@@ -95,12 +118,29 @@ const PaymentDetails = () => {
                     <div className="flex flex-row items-start justify-between w-full overflow-hidden">
                       <div className="flex flex-row items-center text-[14px] text-[#868F9A] gap-1">
                         누적 포인트
-                        <Image
-                          src="/assets/Icons/questionMark.svg"
-                          alt="Question Mark Icon"
-                          width={14}
-                          height={14}
-                        />
+                        <Tooltip
+                          placement="bottom-start"
+                          content={
+                            <Card>
+                              <CardBody className="p-2">
+                                <p className="text-sm max-w-[400px]">
+                                  이용하는 도중에 환불할 경우에는 이용한 자료의
+                                  포인트만큼 차감하고 환불하므로 개별 구매한
+                                  것과 동일한 결과가 됩니다. 환불은 결제일로부터
+                                  1개월 이내에 가능합니다.
+                                </p>
+                              </CardBody>
+                            </Card>
+                          }
+                        >
+                          <Image
+                            src="/assets/Icons/questionMark.svg"
+                            alt="Question Mark Icon"
+                            className="cursor-pointer"
+                            width={14}
+                            height={14}
+                          />
+                        </Tooltip>
                       </div>
                       <div className="text-[14px] text-[#868F9A]">2000P</div>
                     </div>
@@ -122,7 +162,13 @@ const PaymentDetails = () => {
                   <div className="text-[16px] flex flex-row gap-4">
                     <span className="font-bold">1,000 P</span>
                   </div>
-                  <div className="text-[12px] text-[#868F9A]"> 내역보기</div>
+                  <button
+                    className="text-[12px] text-[#868F9A]"
+                    onClick={onHistoryBtn}
+                  >
+                    {" "}
+                    내역보기
+                  </button>
                 </div>
               </Card>
             </div>
@@ -187,6 +233,125 @@ const PaymentDetails = () => {
 
       {/* Footer remains at the bottom of the page */}
       <Footer />
+
+      {/* Modal For Refund*/}
+
+      <Modal
+        isOpen={isRefundBtn}
+        placement="center"
+        onOpenChange={onRefundBtnChange}
+        hideCloseButton
+        classNames={{
+          base: ["min-w-[345px] px-10 flex justify-center items-center "],
+          body: ["w-full p-0 flex justify-center items-center"],
+        }}
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalBody>
+                <div className="flex flex-col items-center justify-center">
+                  <h2 className="mt-5 py-3 text-center text-[20px] font-bold text-mainBlack">
+                    환불 신청
+                  </h2>
+                </div>
+
+                <div className="mt-3">
+                  <p className="text-[#868F9A] text-center">
+                    -이용한 자료의 포인트만큼 차감하고 환불됩니다.
+                  </p>
+                  <p className="text-[#868F9A] text-center">
+                    -신청 후 2~3일 정도 소요될 수 있습니다.
+                  </p>
+                </div>
+
+                <div className="mt-7 flex items-center justify-center gap-4">
+                  <Button
+                    className="rounded-[10px] bg-[#ECEDF1] text-[#868F9A] px-4 py-[12px] text-base font-bold  "
+                    onClick={() => {
+                      onRefundBtnChange();
+                    }}
+                  >
+                    취소
+                  </Button>
+                  <Button
+                    className="rounded-[10px] bg-[#E0F1FF] text-[#ED3D2E] px-4 py-[12px] text-base font-bold "
+                    onClick={() => {
+                      onRefundBtnChange();
+                    }}
+                  >
+                    환불 신청
+                  </Button>
+                </div>
+              </ModalBody>
+              <ModalFooter></ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+
+      {/* Modal For vie history*/}
+
+      <Modal
+        isOpen={isHistoryBtn}
+        placement="center"
+        onOpenChange={onHistoryBtnChange}
+        hideCloseButton
+        classNames={{
+          base: ["min-w-[345px] px-10 pt-5 flex justify-center items-center "],
+          body: ["w-full p-0 flex justify-center items-center"],
+        }}
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalBody>
+                <div className="space-y-3 w-full">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[#868F9A]">2024.10.02 13:00</p>
+                      <p className="text-[#353A46]">관리자 제공</p>
+                    </div>
+                    <p className="text-[#42A8FD] font-bold">+ 100원</p>
+                  </div>
+
+                  <hr className="border-t-[1px] border-[#CFD4DA]" />
+
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[#868F9A]">2024.10.02 13:00</p>
+                      <p className="text-[#353A46]">관리자 제공</p>
+                    </div>
+                    <p className="text-[#42A8FD] font-bold">+ 100원</p>
+                  </div>
+
+                  <hr className="border-t-[1px] border-[#CFD4DA]" />
+
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[#868F9A]">2024.09.28 13:00</p>
+                      <p className="text-[#353A46]">자료 구매</p>
+                    </div>
+                    <p className="text-[#ED3D2E] font-bold">- 1,000원</p>
+                  </div>
+                </div>
+
+                <div className="mt-7 flex items-center justify-center gap-4">
+                  <Button
+                    className="rounded-[10px] bg-[#ECEDF1] text-[#868F9A] px-4 py-[12px] text-base font-bold  "
+                    onClick={() => {
+                      onHistoryBtnChange();
+                    }}
+                  >
+                    닫기
+                  </Button>
+                </div>
+              </ModalBody>
+              <ModalFooter></ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 };

@@ -6,7 +6,7 @@ const Footer = () => {
       {/* Inner Container */}
       <div className="w-full sm:max-w-[1150px] flex flex-col gap-[12px] px-4">
         {/* First Section: Company Info */}
-        <div className="grid sm:flex sm:items-center sm:justify-center grid-cols-2 sm:flex-row sm:gap-[10px]">
+        <div className="grid sm:flex sm:items-center  grid-cols-2 sm:flex-row sm:gap-[10px]">
           <p className="text-gray-500 text-[9px] sm:text-[11px] hover:underline">
             자유로 도서
           </p>
